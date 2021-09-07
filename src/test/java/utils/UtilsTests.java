@@ -1,12 +1,15 @@
 package utils;
 
 import com.github.crab2died.exceptions.Excel4JException;
+import com.github.crab2died.handler.ExcelHeader;
 import com.github.crab2died.utils.Utils;
+import modules.Student2;
 import org.junit.Test;
 
 import java.beans.IntrospectionException;
 import java.lang.reflect.Method;
 import java.math.BigDecimal;
+import java.util.List;
 
 public class UtilsTests {
 
@@ -30,6 +33,14 @@ public class UtilsTests {
     public void bigDecimalTest() {
         BigDecimal bigDecimal = new BigDecimal("12989E19");
         System.out.println(bigDecimal);
+    }
+
+    @Test
+    public void headlistTest() throws Excel4JException{
+        List<ExcelHeader> headerList = Utils.getHeaderList(Student2.class);
+        for (ExcelHeader excelHeader : headerList) {
+            System.out.println(excelHeader.getFiled());
+        }
     }
 
     @Test
